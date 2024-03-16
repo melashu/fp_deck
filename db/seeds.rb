@@ -1,9 +1,10 @@
+TradingAccount.all.delete_all
 User.user.delete_all
 Status.all.delete_all
-TradingAccount.all.delete_all
 puts "=======================Started====================="
 TYPE = ["standard", "algo", "competition"]
 PHASE = ["student", "practitioner", "master"]
+User.create!(first_name: "meshu",email: "meshu.amare@gmail.com", last_name: "Amare", user_name: "meshu", role: "admin", password: "12345678")
 20.times do 
     User.create!(first_name: Faker::Name.first_name,email: Faker::Internet.email, last_name: Faker::Name.last_name, user_name: Faker::Name.unique.first_name, password: "12345678")
 end
