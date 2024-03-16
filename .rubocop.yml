@@ -1,0 +1,87 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-capybara
+  - rubocop-factory_bot
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - node_modules/**/*
+    - db/migrate/*
+    - db/schema.rb
+    - public/**/*
+    - vendor/**/*
+    - tmp/**/*
+    - bin/**/*
+
+Rails:
+  Enabled: true # enable rubocop-rails cops
+RSpec:
+  Enabled: true # enable rubocop-rspec cops
+RSpec/DescribeClass:
+  Enabled: false # ignore missing comments on classes
+Bundler/DuplicatedGem:
+  Enabled: false # ignore duplicated gem errors because we will have duplicated gems when dual booting
+
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/**/*
+    - config/routes.rb
+
+Lint/MissingSuper:
+  Exclude:
+    - app/views/**/*
+    - app/components/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 128
+  Exclude:
+    - config/initializers/*
+    - app/views/**/*
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/ClassLength:
+  Max: 152
+
+Metrics/ParameterLists:
+  Max: 10
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/PerceivedComplexity:
+  Max: 14
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/ExampleLength:
+  Max: 50
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 8
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
+
+Naming/MethodParameterName:
+  Enabled: false
+
+LexicallyScopedActionFilter:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
