@@ -16,6 +16,8 @@ gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'view_component'
+gem 'devise', '~> 4.9'
+
 
 gem 'bootsnap', require: false
 
