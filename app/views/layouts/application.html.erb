@@ -28,7 +28,9 @@
   <body class="relative">
    <div class="hidden absolute bg-gray-600 inset-0 bg-opacity-15 z-30" id="overly"></div>
     <main class="">
-      <%=render(HeaderComponent.new)%>
+       <% if user_signed_in?%>
+      <%=render(HeaderComponent.new(user: current_user))%>
+      <%end%>
       <%= yield %>
     </main>
   </body>
