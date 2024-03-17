@@ -1,0 +1,3 @@
+<%=turbo_stream.update "filter-search-form" do%>
+ <%=render(SearchFilterComponent.new(search_filter: @search_filter, user: current_user))%>
+<%end%>
