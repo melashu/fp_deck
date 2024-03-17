@@ -7,4 +7,8 @@ class User < ApplicationRecord
       user: "user",
       admin: "admin"
     }
+
+    def full_name
+      first_name + " " + last_name
+    end
 end
