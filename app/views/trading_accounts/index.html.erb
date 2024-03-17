@@ -1,0 +1,24 @@
+<div class="main-container bg-[#FBFBFDCC]">
+ <div class="left">
+   <%=render(SearchFilterComponent.new(search_filter: SearchFilter.new))%>
+ </div>
+
+ <div class="right">
+   <div class="right-inner">
+      <div class="right-inner-quick-stats">
+       <p>Quick Stats</p>
+       <button>Edit</button>
+      </div>
+      <div class="right-inner-widget-container">
+        <%=render(WidgetsComponent.new)%>
+      </div>
+      <div class="right-inner-paginate-container">
+        <%=render(PaginateComponent.new)%>
+      </div>
+      <div class="right-inner-table-container">
+       <%=render(TableComponent.new)%>
+      </div>
+   </div>
+ </div>
+
+</div>
