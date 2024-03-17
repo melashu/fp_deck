@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class TableComponent < ViewComponent::Base
-   def initialize
+  with_collection_parameter :trading_account
+
+   def initialize(trading_account:)
+      @trading_account = trading_account
    end
 end
