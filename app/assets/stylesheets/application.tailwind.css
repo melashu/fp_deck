@@ -7,5 +7,98 @@
   .btn-primary {
     @apply py-2 px-4 bg-blue-200;
   }
+  /* Navbar */
+  .nav{
+    @apply bg-white dark:bg-gray-900 shadow shadow-[#EDEDEF] border-b border-[#ededed]
+  }
+
+  .inner-nav-container{
+    @apply max-w-screen-xl flex flex-wrap items-center justify-between p-4
+  }
+
+  .nav-item-container{
+    @apply flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white md:items-center dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700
+  }
+
+  .logo-link{
+    @apply flex items-center space-x-3 rtl:space-x-reverse
+  }
+
+  .logo{
+    @apply h-8 border-[0.3px] bg-[#FBFBFD] shadow shadow-[#1018280F]
+  }
+
+  .nav-link{
+    @apply block py-2 px-2 text-white bg-blue-700 text-sm rounded md:bg-transparent md:text-[#3C4149] md:p-0 hover:bg-[#F1F3F9] hover:py-1 hover:px-1 md:dark:text-white
+  }
+
+  .btn-theme-switch{
+    @apply text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5
+  }
+
+  .global-search-container{
+    @apply absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none
+  }
+
+  .filter-select-field{
+    @apply bg-white border border-[#D0D5DD] shadow-sm shadow-[#1018280D] text-[#3C4149] text-sm capitalize rounded-md py-[10px] px-[14px] h-10 w-[18%] focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+  }
+  /* main container */
+  .main-container{
+    @apply flex bg-[#f8f9fc]
+  }
+
+  .left{
+   @apply w-1/4
+  }
+  
+  .right{
+   @apply w-3/4 flex-auto border border-sky-500
+  }
+
+  .right-inner{
+    @apply flex flex-col 
+  }
+
+  .right-inner-quick-stats{
+    @apply flex justify-between items-center
+  }
+
+  .right-inner-widget-container{
+    @apply px-1
+  }
+
+  .widgets{
+    @apply flex gap-4 
+
+  }
+  /* Search filter */
+
+.filter-search-form{
+  @apply flex flex-col gap-6
+}
+.filter-select-field{
+  @apply bg-white border border-[#D0D5DD] shadow-sm shadow-[#1018280D] text-[#3C4149] text-sm capitalize rounded-md py-[10px] px-[14px] h-10 focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+}
+
+.filter-input-field{
+  @apply block w-full px-[14px] py-[10px] ps-10 text-sm text-[#3C4149] border border-[#D0D5DD] rounded-md bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+}
+
+.filter-date-field{
+  @apply bg-white border w-full border-[#D0D5DD] shadow-sm shadow-[#1018280D] text-[#3C4149] text-sm uppercase py-[10px] px-[14px] h-10 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+}
+.btn-filter{
+  @apply rounded-lg py-2 px-[14px] text-sm
+}
+.btn-search-filter{
+  @apply bg-[#1A56DB] border border-[#17419D] shadow shadow-[#1018280D] text-white font-semibold dark:bg-white dark:text-[#1A56DB]
+}
+
+.btn-save-filter{
+  @apply bg-white border border-[#D0D5DD] text-center shadow shadow-[#1018280D] text-[#344054] font-semibold dark:bg-[#344054] dark:text-white
+
+}
+
 }
 
