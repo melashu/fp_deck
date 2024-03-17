@@ -1,9 +1,9 @@
 <div class="widgets">
 <%@statuses.each do |status|%>
-  <div class="widget <%=status.name%>">
+  <div class="widget 1<%=status.name%>">
      <p class="status-name"><%=status.name.split("_").join(" ")%></p>
-     <p class=""><%=status.current_month_stats%></p>
-     <p class="<%=status.calculate_previous_status.negative? ? 'negitive_%': 'positive_%'%> percentage"><%=status.calculate_previous_status%>% vs last month</p>
+     <p class="current_month_stats"><%=status.current_month_stats%></p>
+     <p class="percentage"><span class="<%=status.calculate_previous_status.negative? ? 'negitive_per': 'positive_per'%>"> <%=status.calculate_previous_status%>%</span> vs last month</p>
   </div>
  <%end%>
 </div>
