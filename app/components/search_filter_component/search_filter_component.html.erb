@@ -1,0 +1,54 @@
+<div class="bg-white py-8 px-6 text-gray-900 w-64 dark:bg-gray-900 dark:text-white border-r-2 border-gray-50">
+<%=form_with model: @search_filter, method: :get, class: 'filter-search-form', data: {controller:"search-filters"} do |f|%>
+  <div>
+  <label>Saved Filter</label>
+  <%= select_tag(:saved_filter, options_for_select(@saved_filters, "Saved Filters"), class: 'filter-select-field') %>
+  </div>
+  <div>
+   <label>Status</label>
+    <%= f.select(:status_id, options_for_select(@statuses), {},{class: 'filter-select-field'}) %>
+  </div>
+    
+    <div>
+      <label>User Name</label>
+      <div class="relative">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+          </div>
+          <%= f.search_field :user_name, class: 'filter-input-field', placeholder: "Search for user name" %>
+      </div>
+    </div>
+    <div>
+     <label> User Types </label>
+    <%= f.select(:user_type, options_for_select(@types), {},{class: 'filter-select-field'}) %>
+   </div>
+
+   <div>
+    <label> User Phase </label>
+    <%= f.select(:phase, options_for_select(@pases), {},{class: 'filter-select-field'}) %>
+  </div>
+
+ <div>
+    <label>Account Size </label>
+      <div class="flex w-1/2">
+    <%# <%=f.select(:account_size_from, {}, {class: 'filter-date-field'}) %> 
+    <%=f.date_field :ended, class: 'filter-date-field'%>
+  </div>
+  </div>
+
+
+   <div>
+    <label> Started - Ended </label>
+   <div class="flex w-1/2">
+    <%=f.date_field :started, class: 'filter-date-field' %>
+    <%=f.date_field :ended, class: 'filter-date-field'%>
+  </div>
+  </div>
+  <div class="flex flex-col gap-2">
+   <%=f.submit "#{2.even? ? "Filter results": "Filter results (0)"}", class: 'btn-filter btn-search-filter'%>
+   <%=link_to "Save Filters", "#", class: 'btn-filter btn-save-filter', data:{action: 'search-filters#save_filters'}%>
+  </div>
+<%end%>
+</div>
