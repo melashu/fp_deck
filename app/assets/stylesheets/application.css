@@ -13,3 +13,70 @@
  *= require_tree .
  *= require_self
  */
+
+ .positive_per{
+    color: #12B369;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .negitive_per_per{
+    color: #E94237;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  /* .new {
+    @apply text-sm text-[#047A48] capitalize bg-[#ECFEF3] rounded-2xl py-[2px] pr-[10px] pl-[8px]
+  } */
+
+  .status{
+    text-transform: capitalize;
+    font-size: 12px;
+    border-radius: 16px;
+    padding: 2px 10px 2px 8px;
+    text-align: center;
+
+  }
+
+  .status-new{
+    color: #047A48;
+    background-color: #ECFEF3;
+  }
+
+  .status-passed{
+    color: #166846;
+    background-color: #d6e2db;
+  }
+
+  .status-new::before{
+    content: '.';
+    color: #12B369;
+    font-size: 32px;
+    /* display: flex; */
+    align-items: center;
+  }
+
+  .status-ongoing{
+    color: #7a5504;
+    background-color: #ECFEF3;
+  }
+
+  .status-onboarding{
+   color: #036AA3;
+   background-color: #F0F9FF;
+  }
+
+  .status-expired{
+   color: #B42419;
+   background-color: #F6EBEE;
+  }
+
+  .status-in_review{
+    color: #db9705;
+   background-color: #F6EBEE;
+  }
+
+  .status-not_passed{
+    color: #C43209;
+    background-color: #FFF6ED;
+  }
