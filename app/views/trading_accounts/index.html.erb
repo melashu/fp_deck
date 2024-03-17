@@ -1,6 +1,9 @@
+ <%=render(SavemodalComponent.new)%>
 <div class="main-container bg-[#FBFBFDCC]">
+
+<div id="notification" class="text-yellow"></div>
  <div class="left">
-   <%=render(SearchFilterComponent.new(search_filter: SearchFilter.new))%>
+   <%=render(SearchFilterComponent.new(search_filter: SearchFilter.last, user: current_user))%>
  </div>
 
  <div class="right">
@@ -16,7 +19,57 @@
         <%=render(PaginateComponent.new)%>
       </div>
       <div class="right-inner-table-container">
-       <%=render(TableComponent.new)%>
+      
+<div class="table-container">
+    <table class="table">
+        <thead class="table-head">
+            <tr>
+                <th scope="col" class="px-2 py-3">
+                    ID
+                </th>
+                <th scope="col" class="px-2 py-3">
+                    User Type
+                </th>
+                <th scope="col" class="px-2 py-3">
+                    Phase
+                </th>
+                <th scope="col" class="px-2 py-3">
+                    User
+                </th>
+                <th scope="col" class="px-2 py-3">
+                   Size
+                </th>
+                  <th scope="col" class="px-2 py-3">
+                   Status
+                </th>  <th scope="col" class="px-2 py-3">
+                   Started
+                </th>  <th scope="col" class="px-2 py-3">
+                   Ended
+                </th>  <th scope="col" class="px-2 py-3">
+                   Balance
+                </th>
+                <th scope="col" class="px-2 py-3">
+                   Profit
+                </th>
+
+                <th scope="col" class="px-2 py-3">
+                   Equity
+                </th>
+
+                <th scope="col" class="px-2 py-3">
+                   O.p
+                </th>
+
+                <th scope="col" class="px-2 py-3">
+                   Payouts
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+       <%=render(TableComponent.with_collection(@trading_accounts))%>
+
+        </tbody>
+        </table>
       </div>
    </div>
  </div>
