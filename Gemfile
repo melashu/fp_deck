@@ -34,3 +34,5 @@ group :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
 end
+
+gem "pagy", "~> 7.0"
