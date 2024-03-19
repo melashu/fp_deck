@@ -18,7 +18,8 @@ class SearchFiltersController < ApplicationController
   def pre_populate
     id = params[:id]
     @search_filter = SearchFilter.find(id)
-    @number_of_record = TradingAccount.where("user_type= ? and phase =? and status_id=?", @search_filter.user_type, @search_filter.phase, @search_filter.status_id).where(size: @search_filter.account_size_from..@search_filter.account_size_to).where(started: @search_filter.started).where(ended: @search_filter.ended).count
+    scopes = SearchTradingAccount.call(@search_filter)
+    @number_of_record = TradingAccount.includes(:user).includes(:status).where(scopes.any? ? scopes.reduce(&:merge) : {}).count
     respond_to do |format|
       format.turbo_stream
     end
