@@ -1,7 +1,7 @@
 <div class="widgets">
 <%@statuses.each do |status|%>
   <div class="widget 1<%=status.name%>">
-     <div class="flex justify-between items-center w-full"> <p class="status-name><%=status.name.split("_").join(" ")%></p> <%=image_tag("x.svg", class: 'hidden btn-widget-remove', id: 'btn-widget-remove')%></div>
+     <div class="flex justify-between items-center w-full"> <p class="status-name "><span class="<%=status.name%>"></span><%=status.name.split("_").join(" ")%></p> <%=image_tag("x.svg", class: 'hidden btn-widget-remove', id: 'btn-widget-remove')%></div>
      <p class="current_month_stats"><%=status.current_month_stats%></p>
      <p class="percentage"><span class="<%=status.calculate_previous_status.negative? ? 'negitive_per': 'positive_per'%>"> <%=status.calculate_previous_status%>%</span> vs last month</p>
   </div>
