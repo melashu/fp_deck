@@ -1,0 +1,77 @@
+ <%=render(SavemodalComponent.new)%>
+<div class="main-container bg-[#FBFBFDCC]" >
+
+<div id="notification" class="relative top-[500px] left-1/2"></div>
+ <div class="left" id="filter-search-form" data-controller="search-filters">
+   <%=render(SearchFilterComponent.new(search_filter: SearchFilter.new, user: current_user))%>
+ </div>
+
+ <div class="right">
+   <div class="right-inner" data-controller="widgets">
+      <div class="right-inner-quick-stats">
+       <p>Quick Stats</p>
+       <button class=" hidden save-widget dark:text-white" id="save-widget" data-action="widgets#save">Save</button>
+       <button class="flex items-center gap-2 dark:text-white" id="edit-widget" data-action="widgets#edit"><%=image_tag("edit.svg", class: 'dark:bg-white')%>Edit</button>
+      </div>
+      <div class="right-inner-widget-container">
+        <%=render(WidgetsComponent.new)%>
+      </div>
+      <div class="right-inner-paginate-container">
+        <%=render(PaginateComponent.new(pagy: @pagy))%>
+      </div>
+      <div class="right-inner-table-container">
+      
+<div class="table-container">
+    <table class="table">
+        <thead class="table-head">
+            <tr>
+                <th scope="col" class="px-2 py-3">
+                    ID
+                </th>
+                <th scope="col" class="px-2 py-3">
+                    User Type
+                </th>
+                <th scope="col" class="px-2 py-3">
+                    Phase
+                </th>
+                <th scope="col" class="px-2 py-3">
+                    User
+                </th>
+                <th scope="col" class="px-2 py-3">
+                   Size
+                </th>
+                  <th scope="col" class="px-2 py-3">
+                   Status
+                </th>  <th scope="col" class="px-2 py-3">
+                   Started
+                </th>  <th scope="col" class="px-2 py-3">
+                   Ended
+                </th>  <th scope="col" class="px-2 py-3">
+                   Balance
+                </th>
+                <th scope="col" class="px-2 py-3">
+                   Profit
+                </th>
+
+                <th scope="col" class="px-2 py-3">
+                   Equity
+                </th>
+
+                <th scope="col" class="px-2 py-3">
+                   O.p
+                </th>
+
+                <th scope="col" class="px-2 py-3">
+                   Payouts
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+       <%=render(TableComponent.with_collection(@trading_accounts))%>
+      </tbody>
+        </table>
+      </div>
+   </div>
+ </div>
+
+</div>

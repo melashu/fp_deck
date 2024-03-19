@@ -1,0 +1,80 @@
+
+<div data-controller="search-filters" class="py-8 px-6 text-gray-900 w-full dark:bg-gray-900 dark:text-white border-r-2 border-gray-50">
+ <div class="flex justify-between items-center">
+  <h2 class="mb-6 text-sm font-medium text-[#000] capitalize dark:text-white">Welcome <%=@user.first_name%></h2>
+  <p>
+  <%=link_to "Logout", destroy_user_session_url, data: {turbo_method: :delete}%>
+  </p>
+ </div>
+ <h2 class="mb-6 text-sm font-medium text-[#000] dark:text-white">Filters</h2>
+
+ <div class="mb-6">
+  <label>Saved Filter</label>
+  <%= select_tag(:saved_filter, options_for_select(@saved_filters, "Saved Filters"), class: 'filter-select-field', data:{action: 'search-filters#prePopulate'}) %>
+  </div>
+<%=form_with model: @search_filter, url:trading_accounts_path,  method: :get, class: 'filter-search-form' do |f|%> 
+    <div>
+      <label>User Name </label>
+      <%= f.search_field :user_name, class: 'filter-input-field', data:{action: 'change->search-filters#filter'}, placeholder: "Search for user name" %>
+    </div>
+
+    <div>
+     <label> User Types </label>
+    <%= f.select(:user_type, options_for_select(@types,  selected: f.object.user_type), {},{class: 'filter-select-field', data:{action: 'change->search-filters#filter'}}) %>
+   </div>
+   
+   <div>
+    <label> User Phase </label>
+    <%= f.select(:phase, options_for_select(@pases,selected: f.object.phase), {},{class: 'filter-select-field', data:{action: 'change->search-filters#filter'}}) %>
+  </div>
+   <div>
+    <label>Account Size </label>
+      <div class="flex w-full">
+    <%= f.select(:account_size_from, options_for_select([["From", ""], ["10000", "10000"]],selected: f.object.account_size_from), {},{class: 'filter-date-field', data:{action: 'change->search-filters#filter'}}) %>
+    <%= f.select(:account_size_to, options_for_select([["To", ""], ["20000", "20000"]],selected: f.object.account_size_to), {},{class: 'filter-date-field', data:{action: 'change->search-filters#filter'}}) %>
+     </div>
+  </div>
+
+  <div>
+   <label>Status</label>
+    <%= f.select(:status_id, options_for_select(@statuses, selected: f.object.status_id), {},{class: 'filter-select-field',data:{action: 'change->search-filters#filter'}}) %>
+  </div>
+
+   <div>
+    <label> Started - Ended </label>
+    <div class="flex w-full">
+      <%=f.date_field :started, class: 'filter-date-field', data:{action: 'change->search-filters#filter'}%>
+      <%=f.date_field :ended, class: 'filter-date-field', data:{action: 'change->search-filters#filter'}%>
+    </div>
+  </div>
+  <div>
+    <label>Balance </label>
+      <div class="flex w-full">
+        <%= f.select(:balance_from, options_for_select([["From", ""], ["10000", "10000"]],selected: f.object.balance_from), {},{class: 'filter-date-field'}) %>
+        <%= f.select(:balance_to, options_for_select([["To", ""], ["20000", "20000"]],selected: f.object.balance_to), {},{class: 'filter-date-field'}) %>
+      </div>
+  </div>
+  <div class="flex flex-col gap-2">
+  <input type="hidden" id="user_id" value="<%=@user.id%>">
+   <turbo-frame id="btn-filter" class="btn-filter btn-search-filter flex justify-center text-center">
+   <%=f.submit "Filter results", class: '', id: "btn-filter1"%>
+   </turbo-frame>
+ 
+   <%=link_to "Save Filters", "#", class: 'btn-filter btn-save-filter', data:{action: 'search-filters#show'}%>
+  </div>
+<%end%>
+
+</div>
+
+<div class="mt-10" id="btn-hide">
+<%=link_to root_path, data: {action: 'search-filters#collaps'}, class: 'flex w-9/12 mx-auto gap-4 text-right' do%>
+ <%=image_tag("sidebar.svg")%>
+ <span>Hide filters sidebar</span>
+<%end%>
+</div>
+<div class="mt-max-h-full relative">
+<%=link_to root_path, class: 'w-9/12 mx-auto gap-4 text-right', data:{action: 'search-filters#expand'} do%>
+ <%=image_tag("collapsible.svg", class: 'h-10 w-10 hidden', id: 'btn-show')%>
+<%end%>
+</div>
+

@@ -1,0 +1,38 @@
+
+            <tr class="table-row">
+                <th scope="row" class="px-1 py-4 font-normal text-[12px] text-gray-900 whitespace-nowrap dark:text-white">
+                    <%=@trading_account.id%>
+                </th>
+                <td class="px-1 py-4 font-normal text-[12px]">
+                   <span class="type_and_phase"> <%=@trading_account.user_type%></span>
+                </td>
+                <td class="px-1 py-4 font-normal text-[12px]">
+                 <span class="type_and_phase"><%=@trading_account.phase%></span>
+                </td>
+                <td class="px-1 py-4 font-normal text-[12px]">
+                 <%=@trading_account.user.full_name%>
+                </td>
+                <td class="px-1 py-4 font-normal text-[12px]">
+                   <%=number_to_currency(@trading_account.size)%>
+                </td><td class="px-1 py-4 font-normal text-[12px] ">
+                  <span class="status status-<%=@trading_account.status.name.downcase%>"><%=@trading_account.status.name.split("_").join(" ")%></span>
+                </td><td class="px-1 py-4 font-normal text-[12px]">
+                    <%=@trading_account.started.strftime("%b %d, %k:%M ")%>
+                </td><td class="px-1 py-4 font-normal text-[12px]">
+                <%=@trading_account.ended.strftime("%b %d, %k:%M ")%>
+                </td><td class="px-1 py-4 font-normal text-[12px]">
+                   <%=@trading_account.balance%>
+                </td><td class="px-1 py-4 font-normal text-[12px]">
+                   <%=@trading_account.profit%>
+                    
+                </td><td class="px-1 py-4 font-normal text-[12px]">
+                   <%=@trading_account.equity%>
+                   
+                </td><td class="px-1 py-4 font-normal text-[12px]">
+                     <%=@trading_account.op%>
+                </td>
+                <td class="px-1 py-4 font-normal text-[12px] text-right">
+                <%=@trading_account.payouts%>
+                                  </td>
+            </tr>
+          

@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
+gem 'devise', '~> 4.9'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
@@ -16,15 +17,12 @@ gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'view_component'
-
+gem "pagy", "~> 7.0"
 gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
-  gem 'rubocop'
-  gem 'rubocop-capybara', require: false
-  gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
+  gem 'faker'
 end
 
 group :development do
@@ -36,3 +34,4 @@ group :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
 end
+
