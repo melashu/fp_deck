@@ -1,22 +1,23 @@
  <%=render(SavemodalComponent.new)%>
 <div class="main-container bg-[#FBFBFDCC]">
 
-<div id="notification" class="text-yellow"></div>
- <div class="left">
-   <%=render(SearchFilterComponent.new(search_filter: SearchFilter.last, user: current_user))%>
+<div id="notification" class="relative top-[500px] left-1/2"></div>
+ <div class="left" id="filter-search-form">
+   <%=render(SearchFilterComponent.new(search_filter: SearchFilter.new, user: current_user))%>
  </div>
 
  <div class="right">
-   <div class="right-inner">
+   <div class="right-inner" data-controller="widgets">
       <div class="right-inner-quick-stats">
        <p>Quick Stats</p>
-       <button>Edit</button>
+       <button class=" hidden save-widget" id="save-widget" data-action="widgets#save">Save</button>
+       <button class="flex items-center gap-2" id="edit-widget" data-action="widgets#edit"><%=image_tag("edit.svg")%>Edit</button>
       </div>
       <div class="right-inner-widget-container">
         <%=render(WidgetsComponent.new)%>
       </div>
       <div class="right-inner-paginate-container">
-        <%=render(PaginateComponent.new)%>
+        <%=render(PaginateComponent.new(pagy: @pagy))%>
       </div>
       <div class="right-inner-table-container">
       
