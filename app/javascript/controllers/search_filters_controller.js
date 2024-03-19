@@ -3,18 +3,19 @@ import { Turbo } from "@hotwired/turbo-rails"
 
 // Connects to data-controller="search-filters"
 export default class extends Controller {
-  status = document.getElementById("status_id")
-  type = document.getElementById("user_type")
-  user_name = document.getElementById("user_name")
-  phase = document.getElementById("phase")
-  account_size_from = document.getElementById("account_size_from")
-  account_size_to = document.getElementById("account_size_to")
-  started = document.getElementById("started")
-  ended = document.getElementById("ended")
-  balance_size_from = document.getElementById("balance_size_from")
-  balance_size_to = document.getElementById("balance_size_to")
+  status = document.getElementById("search_filter_status_id")
+  type = document.getElementById("search_filter_user_type")
+  user_name = document.getElementById("search_filter_user_name")
+  phase = document.getElementById("search_filter_phase")
+  account_size_from = document.getElementById("search_filter_account_size_from")
+  account_size_to = document.getElementById("search_filter_account_size_to")
+  started = document.getElementById("search_filter_started")
+  ended = document.getElementById("search_filter_ended")
+  balance_size_from = document.getElementById("search_filter_balance_from")
+  balance_size_to = document.getElementById("search_filter_balance_to")
   user_id = document.getElementById("user_id")
-
+  search_filter = {}
+  formData = new FormData();
   overly = document.getElementById("overly")
   modalID = document.getElementById("popup-modal")
 
@@ -74,8 +75,6 @@ export default class extends Controller {
     formData.append("balance_to", this.balance_size_to.value);
     formData.append("phase", this.phase.value);
         
-        
-        
     const response = await fetch(`/search_filters`, {
       method: 'POST',
       headers: { "X-CSRF-Token": this.token,  "Accept": "text/vnd.turbo-stream.html"},
@@ -97,9 +96,21 @@ export default class extends Controller {
     this.overly.style.display = "none"
   }
 
+  async filter(e) {
+    this.search_filter[e.target.name] = e.target.value
+    
+    this.formData.append(`${e.target.name}`, e.target.value)
+    const response = await fetch(`/trading_accounts/filter`, {
+      method: 'post',
+      headers: { "X-CSRF-Token": this.token, "Accept": "text/vnd.turbo-stream.html"},
+      body: this.formData
+    });
+     const html = await response.text()
+     Turbo.renderStreamMessage(html)
+  }
+
   async prePopulate(e) {
    const id = e.target.value
-
     const response = await fetch(`/search_filters/${id}/pre_populate`, {
       method: 'get',
       headers: {"Accept": "text/vnd.turbo-stream.html"},
