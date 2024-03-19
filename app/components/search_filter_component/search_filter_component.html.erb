@@ -1,21 +1,21 @@
-<div data-controller="search-filters" class=" py-8 px-6 text-gray-900 w-full dark:bg-gray-900 dark:text-white border-r-2 border-gray-50">
- <div>
+
+<div data-controller="search-filters" class="py-8 px-6 text-gray-900 w-full dark:bg-gray-900 dark:text-white border-r-2 border-gray-50">
+ <div class="flex justify-between items-center">
+  <h2 class="mb-6 text-sm font-medium text-[#000] capitalize dark:text-white">Welcome <%=@user.first_name%></h2>
+  <p>
+  <%=link_to "Logout", destroy_user_session_url, data: {turbo_method: :delete}%>
+  </p>
+ </div>
+ <h2 class="mb-6 text-sm font-medium text-[#000] dark:text-white">Filters</h2>
+
+ <div class="mb-6">
   <label>Saved Filter</label>
   <%= select_tag(:saved_filter, options_for_select(@saved_filters, "Saved Filters"), class: 'filter-select-field', data:{action: 'search-filters#prePopulate'}) %>
   </div>
 <%=form_with model: @search_filter, url:trading_accounts_path,  method: :get, class: 'filter-search-form' do |f|%> 
- 
-    
     <div>
       <label>User Name </label>
-      <div class="relative">
-          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-              </svg>
-          </div>
-          <%= f.search_field :user_name, class: 'filter-input-field', data:{action: 'change->search-filters#filter'}, placeholder: "Search for user name" %>
-      </div>
+      <%= f.search_field :user_name, class: 'filter-input-field', data:{action: 'change->search-filters#filter'}, placeholder: "Search for user name" %>
     </div>
 
     <div>
@@ -66,9 +66,15 @@
 
 </div>
 
-<div class="mt-10 w-11/12 mx-auto">
-<%=link_to root_path, class: 'flex' do%>
+<div class="mt-10" id="btn-hide">
+<%=link_to root_path, data: {action: 'search-filters#collaps'}, class: 'flex w-9/12 mx-auto gap-4 text-right' do%>
  <%=image_tag("sidebar.svg")%>
- Hide filters sidebar
+ <span>Hide filters sidebar</span>
 <%end%>
 </div>
+<div class="mt-max-h-full relative">
+<%=link_to class: 'w-9/12 mx-auto gap-4 text-right', data:{action: 'search-filters#expand'} do%>
+ <%=image_tag("collapsible.svg", class: 'h-10 w-10 hidden', id: 'btn-show')%>
+<%end%>
+</div>
+
