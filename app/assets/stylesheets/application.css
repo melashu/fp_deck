@@ -155,3 +155,57 @@
     align-items: center;
     vertical-align: super;
   }
+
+  .collapsible{
+    animation: collaps 0.3s ease-in alternate-reverse forwards;
+  }
+
+  .expandable{
+    animation: expand 0.3s ease-in alternate-reverse backwards;
+  }
+
+  @keyframes expand {
+    100% {
+     width: 24px;
+    }
+    75%{
+      width: 5%;
+    }
+    50% {
+      width: 10%;
+    }
+    25%{
+      width: 15%;
+    }
+
+    0%{
+      width: 20%;
+    }
+  }
+
+  @keyframes collaps {
+    0% {
+     width: 24px;
+    }
+    25%{
+      width: 5%;
+    }
+    50% {
+      width: 10%;
+    }
+    75%{
+      width: 15%;
+    }
+    100%{
+      width: 20%;
+    }
+  }
+ .export-to-csv{
+  border: 1px solid #D0D5DD;
+  text-align: center;
+ }
+
+  .export-to-csv::before{
+   content: '\27A4';
+   background:#ddd;
+  }
