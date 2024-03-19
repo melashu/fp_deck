@@ -6,7 +6,11 @@ class SearchFiltersController < ApplicationController
       if search_filter.save
         format.turbo_stream
       else
-        format.turbo_stream
+        message = search_filter.errors.full_messages
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update('notification',
+            ErrorMessageComponent.new(message:).render_in(view_context))
+        end
       end
     end
   end
@@ -14,6 +18,7 @@ class SearchFiltersController < ApplicationController
   def pre_populate
     id = params[:id]
     @search_filter = SearchFilter.find(id)
+    @number_of_record = TradingAccount.where("user_type= ? and phase =? and status_id=?", @search_filter.user_type, @search_filter.phase, @search_filter.status_id).where(size: @search_filter.account_size_from..@search_filter.account_size_to).where(started: @search_filter.started).where(ended: @search_filter.ended).count
     respond_to do |format|
       format.turbo_stream
     end
