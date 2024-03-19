@@ -1,13 +1,20 @@
-<nav class="nav">
-  <div class="inner-nav-container">
 
-    <ul class="nav-item-container">
-        <li>
-         <%=link_to root_path, class: 'logo-link' do%>
-           <%=image_tag("logo.svg", class: 'logo')%>
-         <%end%>
-        </li>
-        <li> <%=link_to "Stats", root_path, class: 'nav-link'%> </li>
+<nav class="nav">
+   <div class="inner-nav-container" data-controller="search-filters">
+    <button data-collapse-toggle="fp-nav" type="button" class="btn-toggle" aria-controls="fp-nav" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+    <div class="hidden w-full md:flex md:justify-between md:w-full" id="fp-nav">
+      <ul class="nav-item-container md:items-start lg:items-center">
+       <li>   
+        <%=link_to root_path, class: 'logo-link' do%>
+            <%=image_tag("logo.svg", class: 'logo')%>
+        <%end%>
+       </li>
+       <li> <%=link_to "Stats", root_path, class: 'nav-link'%> </li>
         <li><%=link_to "Trading accounts", trading_accounts_path, class: 'nav-link'%></li>
         <li><%=link_to "Payouts", root_path, class: 'nav-link'%></li>
         <li><%=link_to "Payouts", root_path, class: 'nav-link'%></li>
@@ -17,14 +24,9 @@
         <li><%=link_to "Templates", root_path, class: 'nav-link'%></li>
       </ul>
 
-
-  <div class="flex gap-1 md:order-2">
-    <button
-  id="theme-toggle"
-  type="button"
-  class="btn-theme-switch"
->
-  <svg
+       <ul class="nav-item-container md:gap-3 md:items-end lg:items-center">
+        <li> <button id="theme-toggle" type="button" class="btn-theme-switch">
+   <svg
     id="theme-toggle-dark-icon"
     class="w-5 h-5 hidden"
     fill="currentColor"
@@ -48,21 +50,28 @@
       clip-rule="evenodd"
     ></path>
   </svg>
-  </button>
-
-    <div class="relative hidden md:block">
+  </button></li>
+        <li>
+         <div class="relative hidden md:block">
       <div class="global-search-container">
         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
         </svg>
         <span class="sr-only">Search icon</span>
       </div>
-      <input type="text" id="search-navbar" class="block active:absolute active:top-1/2 w-5 py-[10px] px-0 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
+      <input type="text" id="global-search-navbar" data-action="click->search-filters#globalSearch" class="globa-search global-search-bar" placeholder="Search or type a command">
     </div>
-    <select id="emails" class="filter-select-field w-64">
-      <option value="<%=@user.email%>"><%=@user.email%></option>
-    </select>
-    <%=image_tag("more.svg", class: 'dark:bg-white')%>
-  </div>
+        
+        </li>
+        <li>
+          <select id="emails" class="filter-select-field w-full lg:w-max lg:pr-8 ">
+           <option value="<%=@user&.email%>"><%=@user&.email%></option>
+          </select>
+        </li>
+        <li>
+        <%=image_tag("more.svg", class: 'dark:bg-white')%>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
