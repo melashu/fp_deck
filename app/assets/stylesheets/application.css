@@ -18,12 +18,27 @@
     color: #12B369;
     font-size: 14px;
     font-weight: 500;
+    font-size: 10px;
+
   }
 
-  .negitive_per_per{
+  .positive_per::before{
+    content: "\2191";
+    color: #12B369;
+    font-size: 10px;
+
+  }
+
+  .negitive_per{
     color: #E94237;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 500;
+  }
+
+  .negitive_per::before{
+    content: "\2193";
+    color: #E94237;
+    font-size: 10px;
   }
   /* .new {
     @apply text-sm text-[#047A48] capitalize bg-[#ECFEF3] rounded-2xl py-[2px] pr-[10px] pl-[8px]
@@ -46,14 +61,6 @@
   .status-passed{
     color: #166846;
     background-color: #d6e2db;
-  }
-
-  .status-new::before{
-    content: '.';
-    color: #12B369;
-    font-size: 32px;
-    /* display: flex; */
-    align-items: center;
   }
 
   .status-ongoing{
@@ -79,4 +86,72 @@
   .status-not_passed{
     color: #C43209;
     background-color: #FFF6ED;
+  }
+  
+  .not_passed::before,
+  .status-not_passed::before{
+    content: '.';
+    color: #C43209;
+    font-size: 32px;
+    align-items: center;
+    vertical-align: super;
+
+  }
+  .in_review::before,
+  .status-in_review::before{
+    content: '.';
+    color: #db9705;
+    font-size: 32px;
+    align-items: center;
+    vertical-align: super;
+
+  }
+   .expired::before,
+  .status-expired::before{
+    content: '.';
+    color: #B42419;
+    font-size: 32px;
+    align-items: center;
+    vertical-align: super;
+
+  }
+
+  .passed::before,
+  .status-passed::before{
+    content: '.';
+    color: #166846;
+    font-size: 32px;
+    align-items: center;
+    vertical-align: super;
+
+  }
+   
+  .new::before,
+  .status-new::before{
+    content: ".";
+    color: #047A48;
+    font-size: 32px;
+    align-items: center;
+    vertical-align: super;
+    padding-right: 2px;
+    /* float: left; */
+  }
+  
+  .ongoing::before,
+  .status-ongoing::before{
+    content: '.';
+    color: #7a5504;
+    font-size: 32px;
+    align-items: center;
+    vertical-align: super;
+
+  }
+
+  .onboarding::before,
+  .status-onboarding::before{
+    content: '.';
+    color: #036AA3;
+    font-size: 32px;
+    align-items: center;
+    vertical-align: super;
   }
