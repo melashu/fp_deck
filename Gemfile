@@ -17,7 +17,7 @@ gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'view_component'
-
+gem "pagy", "~> 7.0"
 gem 'bootsnap', require: false
 
 group :development, :test do
@@ -35,4 +35,3 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem "pagy", "~> 7.0"
