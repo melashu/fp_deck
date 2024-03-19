@@ -22,10 +22,14 @@ export default class extends Controller {
 	token = document.getElementsByName("csrf-token")[0].content
 
 
-  success = document.getElementById("success")
-  error = document.getElementById("error")
+  leftSideSearchForm = document.getElementById("filter-search-form")
+  btnshow = document.getElementById("btn-show");
+  btnHide = document.getElementById("btn-hide");
+
+
 
   notify = document.getElementById("notify_progress")
+  globalSearchInput = document.getElementById("global-search-navbar")
 
   options = {
 		placement: 'bottom-right',
@@ -38,13 +42,38 @@ export default class extends Controller {
 
 	modal = new Modal(this.modalID, this.options);
   connect() {
-    // console.log(this.element.form)
+
+  }
+  initialize() {
+    document.addEventListener("keyup", (e) => {
+      if (e.key == "Escape") {
+    this.overly.style.display = "none"
+    this.globalSearchInput.classList.add('global-search-bar')
+    this.globalSearchInput.classList.remove('active-global-search')
+      }
+    })
   }
   show(e) {
     e.preventDefault()
-
     this.modal.show()
     this.overly.style.display = "flex"
+  }
+
+  collaps(e) {
+    e.preventDefault();
+    this.leftSideSearchForm.classList.add("collapsible");
+    this.leftSideSearchForm.classList.remove("expandable");
+    this.btnHide.style.display = "none";
+    this.btnshow.style.display = "block";
+
+  }
+
+  expand(e) {
+    e.preventDefault();
+    this.leftSideSearchForm.classList.remove("collapsible")
+    this.leftSideSearchForm.classList.add("expandable");
+    this.btnshow.style.display = "none";
+    this.btnHide.style.display = "block";
   }
 
   async save_filters(e) {
@@ -118,5 +147,16 @@ export default class extends Controller {
     });
      const html = await response.text()
      Turbo.renderStreamMessage(html)
+  }
+
+  globalSearch(e) {
+    e.target.classList.remove('global-search-bar')
+    e.target.classList.add('active-global-search')
+    this.overly.style.display = "flex"
+  }
+
+  closeSearch(e) {
+    e.target.classList.add('global-search-bar')
+    e.target.classList.remove('active-global-search')
   }
 }
