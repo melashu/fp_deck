@@ -3,20 +3,16 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 5432
+  host : localhost
+  username: postgres
+  password: 12345678
 development:
   <<: *default
   database: fp_deck_dev
-  port: 5432
-  host : localhost
-  username: postgres
-  password: 12345678
 test:
   <<: *default
   database: fp_deck_test
-  port: 5432
-  host : localhost
-  username: postgres
-  password: 12345678
 production:
   <<: *default
   host: <%= ENV["DB_HOST"] %>
