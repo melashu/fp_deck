@@ -14,7 +14,7 @@
     - [Setup](#setup)
     - [Usage](#usage)
     - [Run tests](#run-tests)
-- [Feature Improvement](#feature-improvement)
+- [Feature Improvement](#features-improvement)
 
 # 📖 FP Deck <a name="fp-deck"></a>
 
@@ -82,8 +82,11 @@ or
  Password: 12345678
 
 ```
+![image](https://github.com/melashu/fp_deck/assets/30173722/d2442603-c744-43d0-bce6-e99c7858e10b)
+
 
 You can also sign up using the signup form.
+
 
 ### Run test  <a name="run-tests"> </a>
 
